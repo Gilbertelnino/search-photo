@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-
 module.exports = {
   up: (queryInterface) =>
     queryInterface.bulkInsert("Photos", [

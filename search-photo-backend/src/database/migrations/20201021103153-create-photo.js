@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Photos", {

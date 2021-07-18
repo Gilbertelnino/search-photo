@@ -11,11 +11,13 @@ dotenv.config();
 const app = express();
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(cors());
+app.use(express());
 
 const PORT = process.env.PORT || 3001;
 
 app.use("/api", albumRouter);
 
+// I am still looking why swaggerui-css is not working
 app.get("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () =>

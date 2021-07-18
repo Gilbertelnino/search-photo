@@ -1,7 +1,6 @@
-/* eslint-disable linebreak-style */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Albums', {
+    await queryInterface.createTable("Albums", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -23,6 +22,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Albums');
+    await queryInterface.dropTable("Albums");
   },
 };

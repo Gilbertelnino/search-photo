@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import models from "../database/models";
 import { onError, onSuccess } from "../utils/response";
 
@@ -26,7 +25,6 @@ class Album {
   }
 
   static async showOneAlbum(req, res) {
-    // eslint-disable-next-line max-len
     try {
       const album = await models.Album.findOne({
         where: { id: req.params.id },

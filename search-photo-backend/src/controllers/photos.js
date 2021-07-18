@@ -5,7 +5,6 @@ class Photos {
   static async getAllPhotos(req, res) {
     try {
       const { albumId } = req.params;
-      // eslint-disable-next-line max-len
       const photos = await models.Photo.findAll({
         where: { album_id: albumId },
         attributes: ["id", "title", "thumbnailUrl", "album_id"],
