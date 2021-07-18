@@ -1,0 +1,176 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0.",
+        "title": "Search Photo App",
+        "description": "Search Photo App is an application by which user can use to search photos by album id",
+        "contact": {
+        "email": "gilbeltelnino@gmail.com"
+        }
+    },
+    "basePath": "/api",
+     "tags": [
+        {
+            "name": "Albums",
+            "description": "Documentation of Album's operations"
+        },
+        {
+            "name": "Photos",
+            "description": "Documentation of Photo's operations"
+        }
+    ],
+    "schemes": ["http", "https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "path": {
+        "/albums/create": {
+            "post": {
+                "tags": ["Articles"],
+                "summary": "Create an Album",
+                "description": "",
+                "consumes": ["multipart/form-data"],
+                "produces": ["application/json"],
+                "parameters": [
+                
+                {
+                    "in": "formData",
+                    "name": "name",
+                    "type": "string",
+                    "required": true
+                }
+                ],
+                "responses": {
+                "201": {
+                    "description": "Album created successfully"
+                },
+                "500": {
+                    "description": "Internal Server Error"
+                }
+                }
+            }
+            },
+           "/albums": {
+                "get": {
+                    "summary": "Return all Albums",
+                    "description": "",
+                    "tags": ["Albums"],
+                    "produces": ["application/json"],
+                    "responses": {
+                    "200": {
+                        "description": "All albums fetched successfully",
+                        "schema": {
+                        "$ref": "#/definitions/Albums"
+                        }
+                    },
+                    "500": {
+                    "description": "Internal Server Error"
+                }
+                    }
+                }
+            },
+            "/albums/{album_id}": {
+                "get": {
+                    "tags": ["Albums"],
+                    "summary": "Retrieve single album",
+                    "description": "get one album with the given id ",
+                    "produces": ["application/json"],
+                    "responses": {
+                    "200": {
+                        "description": "Album Fetched Successful",
+                        "schema": {
+                        "$ref": "#/definitions/Albums"
+                        }
+                    },
+                    "500": {
+                    "description": "Internal Server Error"
+                }
+                    }
+                }
+            },
+            "/albums/{albumId}/photos": {
+                "get": {
+                    "tags": ["Photos"],
+                    "summary": "Retrieve all photos for specific album",
+                    "description": "get all photos by album Id ",
+                    "produces": ["application/json"],
+                    "responses": {
+                    "200": {
+                        "description": "Photos Fetched Successful",
+                        "schema": {
+                        "$ref": "#/definitions/Photos"
+                        }
+                    },
+                    "500": {
+                    "description": "Internal Server Error"
+                }
+                    }
+                }
+            },
+            "/albums/{albumId}/photos/create": {
+                "post": {
+                    "tags": ["Photos"],
+                    "summary": "Create photos for specific album",
+                    "description": "create photos by album Id ",
+                    "produces": ["application/json"],
+                    "parameters": [
+                
+                            {
+                                "in": "formData",
+                                "name": "title",
+                                "type": "string",
+                                "required": true
+                            },
+                            {
+                                "in": "formData",
+                                "name": "thumbnailUrl",
+                                "type": "string",
+                                "required": true
+                            },
+                            {
+                                "in": "formData",
+                                "name": "album_id",
+                                "type": "number",
+                                "required": true
+                            }
+                        ],
+                    "responses": {
+                    "201": {
+                        "description": "Photos Created Successful",
+                        "schema": {
+                        "$ref": "#/definitions/Photos"
+                        }
+                    },
+                    "500": {
+                    "description": "Internal Server Error"
+                }
+                    }
+                }
+            }
+        },
+        "definitions": {
+            "Albums": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+                "name": {
+                "type": "string"
+                }
+               }
+           },
+            "Photos": {
+            "type": "object",
+            "required": ["title", "thumbnailUrl", "album_id"],
+            "properties": {
+                "name": {
+                "type": "string"
+                },
+                "thumbnailUrl": {
+                "type": "string"
+                },
+                "album_id": {
+                "type": "number"
+                }
+               }
+           }
+        }
+}
