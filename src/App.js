@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -15,9 +15,9 @@ function App() {
   const fetchPhotos = async () => {
     if (!search) {
       setError("Input Can not be empty");
-      return setTimeout(() => setError(""), 5000);
+      return setPhotos([]);
     }
-
+    setLoading(true);
     const response = await fetch(
       `https://search-pic-backend.herokuapp.com/api/albums/${search}/photos`
     );
@@ -31,6 +31,7 @@ function App() {
     setError("");
     return setPhotos(data);
   };
+   useEffect(() => setLoading(false), [photos]);
 
   return (
     <div className="App container">
@@ -56,6 +57,7 @@ function App() {
           </div>
         ))}
       </div>
+ {loading && <h2>Loading...</h2>}
     </div>
   );
 }
