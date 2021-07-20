@@ -5,7 +5,7 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [search, setSearch] = useState("");
   const [error, setError] = useState();
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const inputChange = (e) => {
     e.preventDefault();
