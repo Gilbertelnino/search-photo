@@ -23,6 +23,7 @@ class Photos {
         ...req.body,
         album_id: albumId,
       });
+      await photo.save();
 
       return onSuccess(res, 201, "Photos Created Successful", photo);
     } catch (error) {
