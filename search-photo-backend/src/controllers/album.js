@@ -18,6 +18,7 @@ class Album {
       const album = await models.Album.create({
         ...req.body,
       });
+      await album.save();
       return onSuccess(res, 201, "Album Created Successful", album);
     } catch (error) {
       return onError(res, 500, "Internal Server Error");
