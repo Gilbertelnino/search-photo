@@ -11,7 +11,6 @@ class Photos {
       });
       return onSuccess(res, 200, "All Photos Fetched Successful", photos);
     } catch (error) {
-      console.log(error);
       return onError(res, 500, "Internal Server Error");
     }
   }
